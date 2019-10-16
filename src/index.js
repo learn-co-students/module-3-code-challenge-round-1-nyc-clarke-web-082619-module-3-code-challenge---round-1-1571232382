@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const commentsURL = `https://randopic.herokuapp.com/comments/`;
 
+  const deleteButtonHTML = `<button>Delete</button>`;
+
   init();
 
 
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(renderPage)
     .then(enableLikes)
     .then(enableComments)
+    .then(enableDelete)
   }
 // Fetch image data
   function fetchImage(){
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       li.dataset.id = comment.id;
       li.innerText = comment.content;
       li.dataset.image_id = imageId;
+      li.innerHTML += deleteButtonHTML;
 
       commentSection.append(li)
     })
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // Comment Functionality
+  // Add Comment Functionality
 
 
   function enableComments(){
@@ -118,7 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
         content: li.innerText
       }
 
-      postNewComment(newComment);
+      postNewComment(newComment)
+      .then((resp) => {
+        li.dataset.id = resp.id;
+        li.innerHTML += deleteButtonHTML;
+      })
 
       commentInput.value = '';
     })
@@ -136,9 +144,39 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify(comment)
     })
     .then(resp => resp.json())
-    
+
   }
 
+  // Delete Comment Functionality
+
+  function enableDelete(){
+    let commentSection = document.querySelector('#comments');
+
+    commentSection.addEventListener('click', (event)=>{
+      if (event.target.innerText == 'Delete'){
+        console.log(event.target.parentNode);
+
+        let commentId = event.target.parentNode.dataset.id;
+        deleteComment(commentId);
+
+        commentSection.removeChild(event.target.parentNode)
+
+
+      }
+
+    })
+
+  }
+
+  function deleteComment(commentId){
+    return fetch(`https://randopic.herokuapp.com/comments/${commentId}`,{
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+  }
 
   
 
