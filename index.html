@@ -11,6 +11,10 @@
     input {
       font-size: 2rem;
     }
+    #image_card{
+      margin-top: 20px;
+    }
+    
   </style>
 </head>
 
@@ -26,8 +30,8 @@
           </span>
           <button id="like_button">Like</button>
           <form id="comment_form">
-            <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
-            <input type="submit" value="Submit"/>
+            <input id="comment_input" type="text" name="comment" placeholder="Add Comment" required/>
+            <input id = "add_comment_button" type="submit" value="Submit"/>
           </form>
           <ul id="comments">
                <!-- <li> for each comment goes here -->
