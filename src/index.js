@@ -107,13 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     fetch(`https://randopic.herokuapp.com/comments/${id}`, configObj)
     .then(response => {
-      let comments = target.parentNode.parentNode;
-      comments.removeChild(target.parentNode);
+      
       //console.log(response);
     })
     .catch(error => {
+      alert("ERROR");
       console.log(error);
     })
+    let comments = target.parentNode.parentNode;
+    comments.removeChild(target.parentNode);
   }
 
   setUpPage();
