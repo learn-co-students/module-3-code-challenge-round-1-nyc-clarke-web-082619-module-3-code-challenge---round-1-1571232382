@@ -107,7 +107,7 @@ A user can like the same picture multiple times.
 
 ## Step 3 - Like Feature (Backend)
 
-This app will use what is called _optimistic rendering_. This means the DOM will be updated *before* the changes are added to the database. When a user clicks the 'Like' button we will immediately update the DOM. Next, your job is to make a POST request to persist the new Like in the backend database.
+This app will use what is called _optimistic rendering_. This means the DOM will be updated *before* the changes are added to the database. When a user clicks the 'Like' button we will immediately update the DOM. Next, your job is to make a **POST** request to persist the new Like in the backend database.
 
 #### API Docs
 
