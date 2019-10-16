@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify(comment)
     })
     .then(resp => resp.json())
+    
   }
 
 
