@@ -12,7 +12,7 @@ This Code Challenge is designed to test your abilities in a similar situation to
 ### Not Allowed
 
  1. Other students
- 2. Any prepared materials 
+ 2. Any prepared materials
  3. Any lessons
  4. Any solution code from any lab, whether you wrote it or Flatiron School did
  5. Code from any lecture
